@@ -5,12 +5,11 @@
 #include "Kismet/KismetSystemLibrary.h"
 
 // Sets default values
-ACharacterBase::ACharacterBase()
+ACharacterBase::ACharacterBase() : ACharacter()
 {
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	DefaultInitialize();
+	Initialize();
 }
 
 ACharacterBase::~ACharacterBase()
@@ -33,7 +32,7 @@ bool ACharacterBase::Enable()
 	return true;
 }
 
-void ACharacterBase::Start()
+bool ACharacterBase::Start()
 {
 	return true;
 }
@@ -59,7 +58,7 @@ bool ACharacterBase::Delete()
 }
 
 // Called when the game starts or when spawned
-bool ACharacterBase::BeginPlay()
+void ACharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
 	
@@ -80,9 +79,10 @@ void ACharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 
 }
 
-bool ACharacterBase::PrintString(FString log, bool returnValue = true) const
+bool ACharacterBase::PrintString(FString log, bool returnValue /*= true*/) const
 {
-	UKismetSystemLibrary::PrintString(GetWorld(), FString::Printf(GetName() + " : " + log));
+	FString str = FString::Printf(TEXT("GAPLOG %s : %s"), *GetName(), *log);
+	UKismetSystemLibrary::PrintString(GetWorld(), str);
 
 	return returnValue;
 }

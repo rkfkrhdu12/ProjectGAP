@@ -24,4 +24,7 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 		class UCameraComponent* MainCamera = nullptr;
 
+public:
+	class USpringArmComponent* GetCameraArm() const { return CameraArm; }
+	class UCameraComponent* GetMainCamera() const { return MainCamera; }
 };
