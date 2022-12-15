@@ -18,48 +18,48 @@ ACharacterBase::~ACharacterBase()
 	Delete();
 }
 
-void ACharacterBase::DefaultInitialize()
+bool ACharacterBase::Initialize()
 {
-
+	return true;
 }
 
-void ACharacterBase::Spawn()
+bool ACharacterBase::Spawn()
 {
-
+	return true;
 }
 
-void ACharacterBase::Enable()
+bool ACharacterBase::Enable()
 {
-
+	return true;
 }
 
 void ACharacterBase::Start()
 {
-
+	return true;
 }
 
-void ACharacterBase::End()
+bool ACharacterBase::End()
 {
-
+	return true;
 }
 
-void ACharacterBase::Disable()
+bool ACharacterBase::Disable()
 {
-
+	return true;
 }
 
-void ACharacterBase::Despawn()
+bool ACharacterBase::Despawn()
 {
-
+	return true;
 }
 
-void ACharacterBase::Delete()
+bool ACharacterBase::Delete()
 {
-
+	return true;
 }
 
 // Called when the game starts or when spawned
-void ACharacterBase::BeginPlay()
+bool ACharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
 	

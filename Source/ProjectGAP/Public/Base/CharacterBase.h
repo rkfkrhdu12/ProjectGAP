@@ -27,19 +27,18 @@ class PROJECTGAP_API ACharacterBase : public ACharacter
 {
 	GENERATED_BODY()
 public:
-	// Sets default values for this character's properties
 	ACharacterBase();
 	~ACharacterBase();
 
-	virtual void DefaultInitialize(); // 생성자용 데이터 정의
-	virtual void Spawn(); // 스폰 시킬때 필요한 > 스폰할때부터 보여야 하는것들 정의
-	virtual void Enable(); // 스폰 후 실질적인 동작을 실행
-	virtual void Start(); // 행동 시작
+	virtual bool Initialize();
+	virtual bool Spawn();
+	virtual bool Enable();
+	virtual bool Start();
 
-	virtual void End();
-	virtual void Disable();
-	virtual void Despawn();
-	virtual void Delete();
+	virtual bool End();
+	virtual bool Disable();
+	virtual bool Despawn();
+	virtual bool Delete();
 
 protected:
 	// Called when the game starts or when spawned

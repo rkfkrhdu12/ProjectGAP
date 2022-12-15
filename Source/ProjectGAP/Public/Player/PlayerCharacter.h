@@ -16,8 +16,7 @@ class PROJECTGAP_API APlayerCharacter : public ACharacterBase
 public:
 	APlayerCharacter();
 
-	void DefaultInitialize()
-
+	virtual bool Initialize() override;
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 		class USpringArmComponent* CameraArm = nullptr;
@@ -25,7 +24,4 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 		class UCameraComponent* MainCamera = nullptr;
 
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Character, meta = (AllowPrivateAccess = "true"))
-		class UCharacterMovementComponent* CharacterMovement = nullptr;
 };

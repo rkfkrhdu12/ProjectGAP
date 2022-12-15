@@ -5,10 +5,11 @@
 
 APlayerCharacter::APlayerCharacter()
 {
-	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
+}
 
-	// set our turn rate for input
-	TurnRateGamepad = 50.f;
+bool APlayerCharacter::Initialize()
+{
+	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
 
 	// Don't rotate when the controller rotates. Let that just affect the camera.
 	bUseControllerRotationPitch = false;
@@ -16,7 +17,7 @@ APlayerCharacter::APlayerCharacter()
 	bUseControllerRotationRoll = false;
 
 	// Configure character movement
-	CharacterMovement = GetCharacterMovement();
+	auto CharacterMovement = GetCharacterMovement();
 	if (!CharacterMovement) return PrintString("CharacterMovement is Null");
 	CharacterMovement->bOrientRotationToMovement = true; // Character moves in the direction of input...	
 	CharacterMovement->RotationRate = FRotator(0.0f, 500.0f, 0.0f); // ...at this rotation rate
@@ -40,4 +41,6 @@ APlayerCharacter::APlayerCharacter()
 	MainCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("MainCamera"));
 	MainCamera->SetupAttachment(CameraArm, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	MainCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
+
+	return ACharacterBase::Initialize();
 }
